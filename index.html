@@ -1,0 +1,50 @@
+<!-- Planet -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planet</title>
+</head>
+<body style='background-color: black;'>
+
+<img src="earth.png" id="earth" style="position: absolute" width="100" height="auto">
+<img src="moon.png" id="moon" style="position: absolute" width="70" height="auto">
+<img src="sun.png" id="sun" style="position: absolute" width="150" height="auto">
+
+<script>
+  let earth = document.querySelector("#earth");
+  let moon = document.querySelector("#moon");
+  let sun = document.querySelector("#sun");
+
+  let angle = 0;
+  let lastTime = null;
+  function animate(time) {
+    if (lastTime != null) angle += (time - lastTime) * 0.0005;
+    lastTime = time;
+    sun.style.top = 350 + "px";
+    sun.style.left = 550 + "px";
+    earth.style.top = (Math.sin(angle) * 330 + 400) + "px";
+    earth.style.left = (Math.cos(angle) * 330 + 600) + "px";
+        requestAnimationFrame(animate);
+  }
+  
+    requestAnimationFrame(animate);
+
+
+    let angle2 = 0;
+    let lastTime2 = null;
+     function animate2(time2) {
+      if (lastTime2 != null) angle2 += (time2 - lastTime2) * 0.002;
+      lastTime2 = time2;
+      moon.style.top = ((Math.sin(angle) * 330 + 430) +Math.sin(angle2)*150) + "px";
+      moon.style.left = ((Math.cos(angle) * 330 + 630) +Math.cos(angle2)*150) + "px";
+        requestAnimationFrame(animate2);
+  }
+      requestAnimationFrame(animate2);
+
+</script>
+
+</body>
+</html>
